@@ -53,7 +53,7 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(git archlinux docker npm pip python ssh-agent jira virtualenvwrapper)
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 # User configuration
-  export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+  export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
   export PATH="/home/michael/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
