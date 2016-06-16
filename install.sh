@@ -47,6 +47,8 @@ fi
 
 vim +BundleInstall +qall
 
+mkdir -p ~/.local/share/fonts/
+
 cp -u ~/.vim/bundle/powerline/font/PowerlineSymbols.otf ~/.local/share/fonts/
 if [[ -z ${XDG_CONFIG_HOME+x} ]]; then
     XDG_CONFIG_HOME="$HOME/.config"
