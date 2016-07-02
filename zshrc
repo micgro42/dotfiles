@@ -100,6 +100,7 @@ preexec() { echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $1" >> ~/.logs/zsh-history
 source ~/dotfiles/antigen/antigen.zsh
 antigen bundle nojhan/liquidprompt --branch=develop
 antigen bundle petervanderdoes/git-flow-completion
+antigen bundle git-hubflow
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
