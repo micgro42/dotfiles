@@ -61,6 +61,7 @@ syntax enable " enable syntax processing
 set background=dark
 "colorscheme solarized
 setglobal modeline      " parses vim instructions in the file like // vim:ts=4:sw=4:et:
+set shiftwidth=4        " number of spaces idented by default
 set tabstop=4           " number of visual spaces per TAB
 set softtabstop=4       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
