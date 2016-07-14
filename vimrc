@@ -55,6 +55,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
+" http://vim.wikia.com/wiki/Omni_completion
+" Usage: in InsertMode press Ctrl+X and Ctrl+O to get a popup with suggestions
+set omnifunc=syntaxcomplete#Complete
+
+
 " vim config files, which are usually sourced: /etc/vim/vimrc, ~/.vimrc
 autocmd Filetype gitcommit setlocal spell textwidth=72
 syntax enable " enable syntax processing
