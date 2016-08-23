@@ -88,7 +88,13 @@ export TERM=xterm-256color
 setxkbmap -layout us,de
 setxkbmap -option 'grp:switch'
 
-dropbox-cli start
+if type dropbox-cli &> /dev/null; then
+    dropbox-cli start
+else
+    if type dropbox &> /dev/null; then
+        dropbox start
+    fi
+fi
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
