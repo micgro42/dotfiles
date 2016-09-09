@@ -19,7 +19,7 @@
 # https://gist.github.com/robmiller/6018582
 
     s = status -s
-    commit = commit -v
+    c = commit --verbose
     unstage = reset HEAD --
     diffc = diff --cached
 	last = log -1 HEAD
@@ -46,7 +46,7 @@
     unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
     assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
 
-    grep = grep -Ii
+    g = grep -Iin #options: ignore case, ignore binary files, show linenumbers
     f = "!git ls-files | grep -i"
     gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
     la = "!git config -l | grep alias | cut -c 7-"
