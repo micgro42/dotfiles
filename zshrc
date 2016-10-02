@@ -1,3 +1,7 @@
+# Set keyboard layout
+setxkbmap -layout us,de
+setxkbmap -option 'grp:switch'
+
 # Path to your oh-my-zsh installation.
   export ZSH=/home/michael/.oh-my-zsh
 
@@ -85,8 +89,6 @@ export TERM=xterm-256color
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-setxkbmap -layout us,de
-setxkbmap -option 'grp:switch'
 
 if type dropbox-cli &> /dev/null; then
     dropbox-cli start
