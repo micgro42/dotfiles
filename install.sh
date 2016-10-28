@@ -32,6 +32,7 @@ installDotfile zshrc
 installDotfile vimrc
 installDotfile gitconfig
 installDotfile shell_aliases
+installDotfile spacemacs
 
 ######## vim ###########
 
