@@ -55,6 +55,7 @@ values."
      shell-scripts
      github
      javascript
+     html
 
      evil-commentary
      )
