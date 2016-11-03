@@ -109,6 +109,14 @@ source ~/dotfiles/antigen/antigen.zsh
 antigen bundle nojhan/liquidprompt --branch=develop
 antigen bundle petervanderdoes/git-flow-completion
 antigen bundle git-hubflow
+
+# Guess what to install when running an unknown command
+antigen bundle command-not-found
+
+antigen bundle djui/alias-tips
+
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle yonchu/grunt-zsh-completion
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
