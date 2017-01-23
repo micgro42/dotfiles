@@ -59,11 +59,14 @@ SAVEHIST=10000000;
 plugins=(git archlinux docker npm pip python ssh-agent jira virtualenvwrapper)
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 # User configuration
-  export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-  export PATH="/home/michael/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+LOCAL_CONF_FILE=".local.conf"
+if [[ -e ~/$LOCAL_CONF_FILE ]] then
+    source ~/.local.conf
+fi
 
 # source /usr/bin/virtualenvwrapper.sh
 
