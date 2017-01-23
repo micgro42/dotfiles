@@ -96,7 +96,9 @@ export TERM=xterm-256color
 
 
 if type dropbox-cli &> /dev/null; then
-    dropbox-cli start
+    if dropbox-cli running ; then
+        dropbox-cli start
+    fi
 else
     if type dropbox &> /dev/null; then
         dropbox start
