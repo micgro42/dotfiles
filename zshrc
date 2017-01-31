@@ -125,6 +125,7 @@ antigen bundle git-hubflow
 
 # Guess what to install when running an unknown command
 antigen bundle command-not-found
+antigen bundle z
 
 antigen bundle djui/alias-tips
 
