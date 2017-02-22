@@ -26,7 +26,7 @@
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --numstat
-    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --date=relative
+    ld = log --pretty=format:"%C(yellow)%h\\ %G?\\ %ad%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --date=relative
     le = log --oneline --decorate
 
     filelog = log -u
