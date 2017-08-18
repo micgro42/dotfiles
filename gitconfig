@@ -55,6 +55,8 @@
     # show the content of the top stash. Created by micgro42 :)
     ssp = stash show -p
 
+    commitsAtDate = "!f() { git log --pretty='format:%C(yellow)%h %G? %ad%Cred%d %Creset%s%C(cyan) [%cn]' --decorate --after=\"$1 0:00\" --before=\"$1 23:59\" --author \"`git config user.name`\"; }; f"
+
     standup = !"git log --reverse --branches --since=$(if [[ \"Mon\" == \"$(date +%a)\" ]]; then echo '\"last friday\"'; else echo \"yesterday\"; fi) --author=$(git config --get user.email) --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local" # https://coderwall.com/p/f4shwg/git-for-daily-standup
 
     ds = "!git --no-pager diff --stat"
