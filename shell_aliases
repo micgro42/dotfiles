@@ -81,6 +81,8 @@ td(){
     td=$TD
     if [ ! -z "$1" ]; then
         td="$HOME/temp/`date -d "$1 days" +'%Y-%m-%d'`";
+    else
+        ln -s -f -T $td "$HOME/temp/00-today"
     fi
     mkdir -p $td; cd $td
     unset td
