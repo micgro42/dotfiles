@@ -72,6 +72,9 @@ alias watchsize='watch -n .5 du -h –max-depth=1'
 
 #alias which='alias | which --tty-only --read-alias --show-dot --show-tilde'
 
+alias phpcsPSR2='phpcs --standard=PSR2 --ignore="*/node_modules/*,*/vendor*/" --extensions=php --colors -p .'
+
+
 # The following part is from http://www.splitbrain.org/blog/2008-02/27-keeping_your_home_directory_organized :
 export TD="$HOME/temp/`date +'%Y-%m-%d'`"
 td(){
