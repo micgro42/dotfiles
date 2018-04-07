@@ -9,6 +9,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'powerline/fonts'
 
+Plugin 'wakatime/vim-wakatime'
+
 " jump around documents
 Bundle 'Lokaltog/vim-easymotion'
 
