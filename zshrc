@@ -116,6 +116,10 @@ export TERM=xterm-256color
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.shell_aliases
 
+find "$HOME/temp/" -maxdepth 1 -type d -empty -exec rmdir {} \;
+mkdir -p $TD;
+ln -s -f -T $TD "$HOME/temp/00-today"
+
 preexec() { echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $1" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; }
 
 source ~/dotfiles/antigen/antigen.zsh
