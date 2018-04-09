@@ -61,12 +61,22 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
-
 LOCAL_CONF_FILE=".local.conf"
 if [[ -e ~/$LOCAL_CONF_FILE ]] then
     source ~/.local.conf
 fi
+
+if type dropbox-cli &> /dev/null; then
+    if dropbox-cli running ; then
+        dropbox-cli start
+    fi
+else
+    if type dropbox &> /dev/null; then
+        dropbox start
+    fi
+fi
+
+source $ZSH/oh-my-zsh.sh
 
 # source /usr/bin/virtualenvwrapper.sh
 
@@ -100,16 +110,6 @@ export TERM=xterm-256color
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-
-if type dropbox-cli &> /dev/null; then
-    if dropbox-cli running ; then
-        dropbox-cli start
-    fi
-else
-    if type dropbox &> /dev/null; then
-        dropbox start
-    fi
-fi
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
