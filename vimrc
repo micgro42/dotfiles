@@ -10,6 +10,7 @@ Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'powerline/fonts'
 
 Plugin 'wakatime/vim-wakatime'
+Plugin 'editorconfig/editorconfig-vim'
 
 " jump around documents
 Bundle 'Lokaltog/vim-easymotion'
