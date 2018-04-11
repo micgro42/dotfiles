@@ -46,7 +46,7 @@ else
         cd -
 fi
 
-vim +BundleInstall +qall
+vim +PluginInstall! +qall
 
 mkdir -p ~/.local/share/fonts/
 
