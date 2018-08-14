@@ -130,6 +130,7 @@ antigen bundle petervanderdoes/git-flow-completion
 antigen bundle command-not-found
 antigen bundle z
 antigen bundle yarn
+antigen bundle systemadmin
 
 antigen bundle djui/alias-tips
 
