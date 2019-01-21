@@ -38,6 +38,7 @@ installDotfile vimrc
 installDotfile gitconfig
 installDotfile shell_aliases
 installDotfile spacemacs
+installDotfile conkyrc
 
 ######## vim ###########
 
