@@ -88,6 +88,9 @@ td(){
     unset td
 }
 
+# Shows the number of failed login attempts and doesn't fork and thus indicates the time it was running in the next shell prompt
+alias i3lock=i3lock -nf
+
 # the next chunk of code is from http://notes.splitbrain.org/bashrc
 # color in man pages http://icanhaz.com/colors
 export LESS_TERMCAP_mb=$'\E[01;31m'
