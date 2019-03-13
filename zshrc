@@ -123,7 +123,7 @@ ln -s -f -T $TD "$HOME/temp/00-today"
 preexec() { echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $1" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; }
 
 source ~/dotfiles/antigen/antigen.zsh
-antigen bundle nojhan/liquidprompt --branch=develop
+antigen bundle nojhan/liquidprompt
 antigen bundle petervanderdoes/git-flow-completion
 
 # Guess what to install when running an unknown command
