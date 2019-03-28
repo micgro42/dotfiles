@@ -125,6 +125,8 @@ preexec() { echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $1" >> ~/.logs/zsh-history
 source ~/dotfiles/antigen/antigen.zsh
 antigen bundle nojhan/liquidprompt
 antigen bundle petervanderdoes/git-flow-completion
+antigen bundle composer
+antigen bundle fd
 
 # Guess what to install when running an unknown command
 antigen bundle command-not-found
