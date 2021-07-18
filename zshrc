@@ -141,6 +141,9 @@ antigen bundle petervanderdoes/git-flow-completion
 antigen bundle composer
 antigen bundle fd
 
+NVM_AUTOLOAD=1
+antigen bundle nvm
+
 # Guess what to install when running an unknown command
 antigen bundle command-not-found
 antigen bundle z
