@@ -57,7 +57,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
+let g:syntastic_php_checkers = ['php', 'phpcs'] "skippint phpmd for now until it is updated for PHP 7.4
+let g:syntastic_php_phpcs_args = "--standard=PSR12"
 
 " http://vim.wikia.com/wiki/Omni_completion
 " Usage: in InsertMode press Ctrl+X and Ctrl+O to get a popup with suggestions
