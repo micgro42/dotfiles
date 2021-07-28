@@ -8,6 +8,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'powerline/fonts'
+Plugin 'HerringtonDarkholme/yats.vim'
 
 Plugin 'wakatime/vim-wakatime'
 Plugin 'editorconfig/editorconfig-vim'
