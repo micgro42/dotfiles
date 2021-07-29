@@ -150,6 +150,7 @@ antigen bundle z
 antigen bundle yarn
 antigen bundle systemadmin
 
+antigen bundle aliases
 antigen bundle djui/alias-tips
 
 antigen bundle zsh-users/zsh-autosuggestions
