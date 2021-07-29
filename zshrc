@@ -153,6 +153,7 @@ antigen bundle systemadmin
 antigen bundle aliases
 antigen bundle djui/alias-tips
 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
