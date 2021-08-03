@@ -27,6 +27,8 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[color]
+	ui = true
 
 [alias]
 # inspired by the following webpages:
