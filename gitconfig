@@ -13,7 +13,18 @@
 	algorithm = histogram
        # http://git.661346.n2.nabble.com/Different-diff-strategies-in-add-interactive-td7588815.html
     compactionHeuristic = true
-
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 
 [alias]
 # inspired by the following webpages:
