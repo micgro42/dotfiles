@@ -1,3 +1,5 @@
+[user]
+    name = Michael Große
 [include]
     path = ~/.gitconfig_local
 [core]
