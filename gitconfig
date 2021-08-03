@@ -4,6 +4,8 @@
     path = ~/.gitconfig_local
 [core]
 	editor = vim
+[init]
+	defaultBranch = main
 [i18n]
 	commitencoding = utf8
 [push]
