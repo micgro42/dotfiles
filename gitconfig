@@ -2,6 +2,7 @@
     name = Michael Große
 [include]
     path = ~/.gitconfig_local
+    page = diff-so-fancy | less --tabs=4 -RFX
 [core]
 	editor = vim
 [init]
