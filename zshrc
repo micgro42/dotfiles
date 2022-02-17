@@ -56,7 +56,7 @@ SAVEHIST=10000000;
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux docker npm pip python ssh-agent jira virtualenvwrapper)
+plugins=(git archlinux docker npm ssh-agent)
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
