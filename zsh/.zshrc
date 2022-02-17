@@ -56,7 +56,7 @@ SAVEHIST=10000000;
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux docker npm ssh-agent)
+plugins=(git docker npm ssh-agent)
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -143,6 +143,13 @@ antigen bundle fd
 
 NVM_AUTOLOAD=1
 antigen bundle nvm
+
+if [ "$(lsb_release -is)" = "Arch" ]
+then
+    antigen bundle archlinux
+else
+    echo "Not Arch Linux"
+fi
 
 # Guess what to install when running an unknown command
 antigen bundle command-not-found
