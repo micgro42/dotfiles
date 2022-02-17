@@ -77,7 +77,7 @@ alias dircopy="rsync -avzP --append-verify"
 
 alias watchtail='watch -n .5 tail -n 20'
 alias watchdir='watch -n .5 ls -la'
-alias watchsize='watch -n .5 du -h –max-depth=1'
+alias watchsize='watch -n .5 du -h --max-depth=1'
 
 #alias which='alias | which --tty-only --read-alias --show-dot --show-tilde'
 
