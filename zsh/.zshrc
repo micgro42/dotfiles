@@ -136,7 +136,13 @@ prco() {
 
 
 source ~/dotfiles/antigen/antigen.zsh
+
+# disable liquidprompt envs
+LP_ENABLE_VIRTUALENV=0
+LP_ENABLE_SCLS=0
+LP_ENABLE_RUBY_VENV=0
 antigen bundle nojhan/liquidprompt
+
 antigen bundle petervanderdoes/git-flow-completion
 antigen bundle composer
 antigen bundle fd
