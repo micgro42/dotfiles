@@ -163,9 +163,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# bindsym $mod+Control+space exec "emojione-picker --search" 
-# bindsym $mod+Control+space exec "emoji-keyboard -s" 
-bindsym $mod+Control+space exec --no-startup-id "rofimoji -s neutral --copy-only"
+bindsym $mod+Ctrl+space exec "rofimoji --skin-tone neutral --action copy"
 
 # data derived from xprop and
 # https://faq.i3wm.org/question/61/forcing-windows-as-always-floating.1.html
