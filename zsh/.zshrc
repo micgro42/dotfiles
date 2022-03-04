@@ -159,7 +159,7 @@ fi
 
 # Guess what to install when running an unknown command
 antigen bundle command-not-found
-antigen bundle z
+antigen bundle zoxide
 antigen bundle yarn
 antigen bundle systemadmin
 
