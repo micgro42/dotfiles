@@ -97,6 +97,12 @@ td(){
     unset td
 }
 
+
+# docker commands to use some utilities via docker instead of having them installed
+# taken from https://github.com/wiese/dot-files
+alias phpstan='echo "phpstan via docker via alias" && docker run -t --rm --user $(id -u):$(id -g) -v $(pwd):/app:ro phpstan/phpstan:0.8'
+
+
 # Shows the number of failed login attempts and doesn't fork and thus indicates the time it was running in the next shell prompt
 alias i3lock=i3lock -nf
 

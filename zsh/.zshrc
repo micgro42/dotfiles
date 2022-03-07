@@ -124,6 +124,7 @@ ln -s -f -T $TD "$HOME/temp/00-today"
 
 preexec() { echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $1" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; }
 
+export fpath=(~/.mwcli $fpath)
 source ~/dotfiles/antigen/antigen.zsh
 
 # disable liquidprompt envs

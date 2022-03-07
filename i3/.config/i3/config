@@ -188,17 +188,28 @@ bindsym $mod+Ctrl+space exec "rofimoji --skin-tone neutral --action copy --no-fr
 # floating browser(?) pop-ups
 for_window [window_role="pop-up"] floating enable
 
-exec numlockx on
-exec rescuetime
-exec --no-startup-id i3-msg 'exec i3-sensible-terminal;'
-exec --no-startup-id i3-msg 'exec keepassxc;'
-exec --no-startup-id i3-msg 'exec redshift-gtk;'
-# replaced by IRCCloud in Firefox
-# exec --no-startup-id i3-msg 'exec quassel;'
-
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3blocks
 }
+
+# Assign classes of windows to workspaces
+
+assign [class="KeePassXC"] 2
+assign [class="jetbrains-idea"] 3
+assign [class="Mattermost*"] 5
+
+workspace 1 output HDMI-2 eDP-1
+workspace 2 output HDMI-2 eDP-1
+workspace 3 output HDMI-1 eDP-1
+workspace 4 output HDMI-1 eDP-1
+workspace 5 output eDP-1
+workspace 6 output eDP-1
+
+exec --no-startup-id numlockx on
+exec --no-startup-id xsetroot -solid "#000000"
+exec --no-startup-id i3-msg 'workspace 1; exec firefox'
+exec --no-startup-id i3-msg 'workspace 2; exec keepassxc; workspace 1'
+exec --no-startup-id i3-msg 'workspace 3; exec i3-sensible-terminal'
+exec mattermost-desktop
