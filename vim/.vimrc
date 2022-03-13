@@ -17,7 +17,8 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Lokaltog/vim-easymotion'
 
 " full path fuzzy search
-Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " some markdown support
 Plugin 'plasticboy/vim-markdown.git'
@@ -42,7 +43,7 @@ filetype indent plugin on
 " Powerline setup
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
-set t_Co=8
+"set t_Co=8 " messes with fzf+bat sytax highlighting
 set fillchars+=stl:\ ,stlnc:\
 let g:Powerline_mode_V="V·LINE"
 let g:Powerline_mode_cv="V·BLOCK"
@@ -86,3 +87,8 @@ set showtabline=2       " Always display the tabline, even if there is only one 
 set noshowmode          " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set scrolloff=5         " always show 5 lines before/after the cursor
 set title
+
+let mapleader = " "
+nnoremap <leader>pv :Files<CR>
+nnoremap <C-p> :GFiles<CR>
+
