@@ -5,7 +5,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'powerline/fonts'
 Plugin 'HerringtonDarkholme/yats.vim'
@@ -14,7 +13,7 @@ Plugin 'wakatime/vim-wakatime'
 Plugin 'editorconfig/editorconfig-vim'
 
 " jump around documents
-Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'Lokaltog/vim-easymotion'
 
 " full path fuzzy search
 Plugin 'junegunn/fzf'
@@ -27,14 +26,14 @@ Plugin 'plasticboy/vim-markdown.git'
 Plugin 'pangloss/vim-javascript'
 
 " more js syntax options
-Plugin 'maksimr/vim-jsbeautify'
+" Plugin 'maksimr/vim-jsbeautify'
 
 " some yaml support
 Plugin 'avakhov/vim-yaml.git'
 
-Plugin 'vim-latex/vim-latex'
+" Plugin 'vim-latex/vim-latex'
 
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'shawncplus/phpcomplete.vim'
 call vundle#end()
