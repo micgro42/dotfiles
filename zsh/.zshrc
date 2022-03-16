@@ -97,6 +97,8 @@ source $ZSH/oh-my-zsh.sh
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
+# TODO: add check for tmux installed
+bindkey -s ^f "tmux-sessionizer\n"
 
 export VISUAL='vim'
 export TERM=xterm-256color
