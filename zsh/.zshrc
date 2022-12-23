@@ -58,6 +58,7 @@ SAVEHIST=10000000;
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git docker npm ssh-agent)
 zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle ':omz:plugins:nvm' autoload yes
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -147,7 +148,6 @@ antigen bundle petervanderdoes/git-flow-completion
 antigen bundle composer
 antigen bundle fd
 
-NVM_AUTOLOAD=1
 antigen bundle nvm
 
 if [ "$(lsb_release -is)" = "Arch" ]
