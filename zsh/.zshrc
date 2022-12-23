@@ -123,19 +123,6 @@ ln -s -f -T $TD "$HOME/temp/00-today"
 
 preexec() { echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $1" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; }
 
-# FIXME: this should probabely go into git-aliases somewhere?
-# Pull Request Check Out - check out pull request branches from GitHub
-# See https://lebenplusplus.de/2019/04/04/check-out-your-github-pull-request-with-an-interactive-shell-menu/
-prco() {
-    hub pr list             | # Download list of pull requests
-    fzf                     | # Show list as selectable menu
-    egrep -o '[[:digit:]]+' | # extract sequences of digits
-    head -n 1               | # drop all but the first sequence (PR id)
-    xargs hub pr checkout     # convert pro ID input to argument & check out
-}
-
-
-
 source ~/dotfiles/antigen/antigen.zsh
 
 # disable liquidprompt envs
