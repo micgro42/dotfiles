@@ -58,6 +58,7 @@ SAVEHIST=10000000;
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git docker npm ssh-agent)
 zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle :omz:plugins:ssh-agent lazy yes
 zstyle ':omz:plugins:nvm' autoload yes
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
