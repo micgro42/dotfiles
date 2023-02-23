@@ -181,7 +181,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+Ctrl+space exec "rofimoji --skin-tone neutral --action copy"
+bindsym $mod+Ctrl+space exec "rofimoji --skin-tone neutral --action copy --no-frecency -f emojis_smileys_emotion emojis_people_body emojis_animals_nature emojis_food_drink emojis_activities emojis_travel_places emojis_objects emojis_symbols emojis_flags"
 
 # data derived from xprop and
 # https://faq.i3wm.org/question/61/forcing-windows-as-always-floating.1.html
