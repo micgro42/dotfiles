@@ -1,3 +1,4 @@
+echo "executing ~/.zshrc"
 # Set keyboard layout
 setxkbmap -layout us,de
 setxkbmap -option 'grp:switch'
@@ -63,11 +64,6 @@ zstyle ':omz:plugins:nvm' autoload yes
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
-LOCAL_CONF_FILE=".local.conf"
-if [[ -e ~/$LOCAL_CONF_FILE ]] then
-    source ~/.local.conf
-fi
-
 if type dropbox-cli &> /dev/null; then
     if dropbox-cli running ; then
         dropbox-cli start
@@ -126,6 +122,7 @@ ln -s -f -T $TD "$HOME/temp/00-today"
 
 preexec() { echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $1" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; }
 
+export fpath=(~/.mwcli $fpath)
 source ~/dotfiles/antigen/antigen.zsh
 
 # disable liquidprompt envs
@@ -143,8 +140,11 @@ antigen bundle nvm
 if [ "$(lsb_release -is)" = "Arch" ]
 then
     antigen bundle archlinux
+elif [ "$(lsb_release -is)" = "Ubuntu" ]
+then
+    antigen bundle ubuntu
 else
-    echo "Not Arch Linux"
+    echo "Neither Arch Linux nor Ubuntu"
 fi
 
 # Guess what to install when running an unknown command
@@ -152,6 +152,7 @@ antigen bundle command-not-found
 antigen bundle zoxide
 antigen bundle yarn
 antigen bundle systemadmin
+antigen bundle dotenv
 
 antigen bundle aliases
 antigen bundle djui/alias-tips
@@ -160,4 +161,9 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
+
+LOCAL_CONF_FILE=".local.conf"
+if [[ -e ~/$LOCAL_CONF_FILE ]] then
+    source ~/.local.conf
+fi
 

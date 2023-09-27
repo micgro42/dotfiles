@@ -83,3 +83,6 @@
     ds = "!git --no-pager diff --stat"
 [rebase]
 	autosquash = true
+	updateRefs = true
+[commit]
+	template = ~/.gitmessage
