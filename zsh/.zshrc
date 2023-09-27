@@ -150,6 +150,7 @@ antigen bundle command-not-found
 antigen bundle zoxide
 antigen bundle yarn
 antigen bundle systemadmin
+antigen bundle dotenv
 
 antigen bundle aliases
 antigen bundle djui/alias-tips
