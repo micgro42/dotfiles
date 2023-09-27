@@ -64,11 +64,6 @@ zstyle ':omz:plugins:nvm' autoload yes
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
-LOCAL_CONF_FILE=".local.conf"
-if [[ -e ~/$LOCAL_CONF_FILE ]] then
-    source ~/.local.conf
-fi
-
 if type dropbox-cli &> /dev/null; then
     if dropbox-cli running ; then
         dropbox-cli start
@@ -160,4 +155,9 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
+
+LOCAL_CONF_FILE=".local.conf"
+if [[ -e ~/$LOCAL_CONF_FILE ]] then
+    source ~/.local.conf
+fi
 
