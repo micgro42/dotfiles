@@ -64,16 +64,6 @@ zstyle ':omz:plugins:nvm' autoload yes
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
-if type dropbox-cli &> /dev/null; then
-    if dropbox-cli running ; then
-        dropbox-cli start
-    fi
-else
-    if type dropbox &> /dev/null; then
-        dropbox start
-    fi
-fi
-
 source $ZSH/oh-my-zsh.sh
 
 # source /usr/bin/virtualenvwrapper.sh
