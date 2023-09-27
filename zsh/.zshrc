@@ -138,8 +138,11 @@ antigen bundle nvm
 if [ "$(lsb_release -is)" = "Arch" ]
 then
     antigen bundle archlinux
+elif [ "$(lsb_release -is)" = "Ubuntu" ]
+then
+    antigen bundle ubuntu
 else
-    echo "Not Arch Linux"
+    echo "Neither Arch Linux nor Ubuntu"
 fi
 
 # Guess what to install when running an unknown command
