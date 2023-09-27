@@ -1,3 +1,4 @@
+echo "executing ~/.zshrc"
 # Set keyboard layout
 setxkbmap -layout us,de
 setxkbmap -option 'grp:switch'
