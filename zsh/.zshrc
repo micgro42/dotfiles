@@ -140,6 +140,9 @@ fi
 # Guess what to install when running an unknown command
 antigen bundle command-not-found
 antigen bundle zoxide
+# plugin README: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
+# fzf usage: https://github.com/junegunn/fzf#usage
+antigen bundle fzf
 antigen bundle yarn
 antigen bundle systemadmin
 antigen bundle dotenv
