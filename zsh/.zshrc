@@ -57,7 +57,19 @@ SAVEHIST=10000000;
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker npm ssh-agent)
+plugins=(
+  git
+  docker
+  npm
+  nvm
+  ssh-agent
+  zoxide
+  fd
+  dotenv
+  fzf
+  aliases
+  command-not-found
+)
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 zstyle :omz:plugins:ssh-agent lazy yes
 zstyle ':omz:plugins:nvm' autoload yes
@@ -113,47 +125,42 @@ ln -s -f -T $TD "$HOME/temp/00-today"
 preexec() { echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $1" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; }
 
 export fpath=(~/.mwcli $fpath)
-source ~/dotfiles/antigen/antigen.zsh
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
 
 # disable liquidprompt envs
 LP_ENABLE_VIRTUALENV=0
 LP_ENABLE_SCLS=0
 LP_ENABLE_RUBY_VENV=0
-antigen bundle nojhan/liquidprompt
-
-antigen bundle petervanderdoes/git-flow-completion
-antigen bundle composer
-antigen bundle fd
-
-antigen bundle nvm
-
-if [ "$(lsb_release -is)" = "Arch" ]
-then
-    antigen bundle archlinux
-elif [ "$(lsb_release -is)" = "Ubuntu" ]
-then
-    antigen bundle ubuntu
-else
-    echo "Neither Arch Linux nor Ubuntu"
-fi
-
-# Guess what to install when running an unknown command
-antigen bundle command-not-found
-antigen bundle zoxide
-# plugin README: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
-# fzf usage: https://github.com/junegunn/fzf#usage
-antigen bundle fzf
-antigen bundle yarn
-antigen bundle systemadmin
-antigen bundle dotenv
-
-antigen bundle aliases
-antigen bundle djui/alias-tips
+zinit ice ver"stable" lucid nocd
+zinit light nojhan/liquidprompt
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen apply
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit load djui/alias-tips
+
 
 LOCAL_CONF_FILE=".local.conf"
 if [[ -e ~/$LOCAL_CONF_FILE ]] then
