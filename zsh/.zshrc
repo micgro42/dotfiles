@@ -90,11 +90,6 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-# fix for HOME and END key not working in zsh
-# https://wiki.archlinux.org/index.php/Home_and_End_keys_not_working#Zsh
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
-
 # TODO: add check for tmux installed
 bindkey -s ^f "tmux-sessionizer\n"
 
