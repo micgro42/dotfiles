@@ -3,6 +3,11 @@ echo "executing ~/.zshrc"
 setxkbmap -layout us,de
 setxkbmap -option 'grp:switch'
 
+LOCAL_CONF_FILE=".local.conf"
+if [[ -e ~/$LOCAL_CONF_FILE ]] then
+    source ~/.local.conf
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -155,10 +160,4 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit load djui/alias-tips
-
-
-LOCAL_CONF_FILE=".local.conf"
-if [[ -e ~/$LOCAL_CONF_FILE ]] then
-    source ~/.local.conf
-fi
 
