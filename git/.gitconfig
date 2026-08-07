@@ -2,9 +2,9 @@
     name = Michael Große
 [include]
     path = ~/.gitconfig_local
-    page = diff-so-fancy | less --tabs=4 -RFX
 [core]
 	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RF
 [init]
 	defaultBranch = main
 [i18n]
@@ -86,3 +86,5 @@
 	updateRefs = true
 [commit]
 	template = ~/.gitmessage
+[interactive]
+	diffFilter = diff-so-fancy --patch
