@@ -44,11 +44,11 @@
     diffc = diff --cached
 	last = log -1 HEAD
 	visual = !gitk --all&
-    addnw = !sh -c 'git diff -w --no-color "$@" | git apply --cached --ignore-whitespace' - 
+    addnw = !sh -c 'git diff -w --no-color "$@" | git apply --cached --ignore-whitespace' -
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --numstat
-    ld = log --pretty=format:"%C(yellow)%h\\ %G?\\ %ad%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --date=relative
+    ld = log --pretty=format:"%C(yellow)%h\\ %G?\\ %cd%Cred%d\\ %Creset%s%C(cyan)\\ [%an]" --decorate --date=relative
     le = log --oneline --decorate
 
     filelog = log -u
