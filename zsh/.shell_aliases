@@ -23,7 +23,6 @@ alias grep='grep --color=auto'
 
 alias xosview='xosview -xrm "xosview*cpuFormat: all" -xrm "xosview*netBandwidth: 786432"'
 alias qtiplot='qtiplot -l=en'
-alias gnucash="LANG=de_DE.utf8; LANGUAGE=de_DE.utf8; gnucash"
 
 # see: https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
 
