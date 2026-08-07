@@ -28,7 +28,7 @@ alias gnucash="LANG=de_DE.utf8; LANGUAGE=de_DE.utf8; gnucash"
 # see: https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
 
 # df - report file system disk space usage
-alias df="df -Tha --total" # print total, show fs-type, 
+alias df="df -Tha --total" # print total, show fs-type,
 
 # du - estimate file space usage
 # alias du="du -ach | sort -h"
@@ -47,18 +47,18 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 ## get top process eating memory
 alias psmem='ps auxf | head -n 1 && ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | head -n 1 && ps auxf | sort -nr -k 4 | head -10'
- 
+
 ## get top process eating cpu ##
 alias pscpu='ps auxf | head -n 1 && ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | head -n 1 && ps auxf | sort -nr -k 3 | head -10'
- 
+
 ## Get server cpu info ##
 alias cpuinfo='lscpu'
- 
+
 ## older system use /proc/cpuinfo ##
 ##alias cpuinfo='less /proc/cpuinfo' ##
- 
-## get GPU ram on desktop / laptop## 
+
+## get GPU ram on desktop / laptop##
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
 alias gitkira='GIT_SSH_COMMAND="ssh -p 36000" git'
