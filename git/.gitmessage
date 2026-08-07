@@ -1,4 +1,10 @@
 
+#<type>(<component>): <imperative commit topic>
+# valid types:
+# stats --> statslib related changes
+# instrument --> experiment/instrumentation related changes
+# test --> changes related to testing, including cypress
+# perf --> A code change that improves performance
 
 # Why is it necessary?
 
@@ -8,4 +14,4 @@
 
 # What (subtle) technical decisions were made in this code and why, with what tradeoffs?
 
-# Bug: 
+# Bug:
