@@ -81,6 +81,9 @@
     standup = !"git log --reverse --branches --since=$(if [[ \"Mon\" == \"$(date +%a)\" ]]; then echo '\"last friday\"'; else echo \"yesterday\"; fi) --author=$(git config --get user.email) --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local" # https://coderwall.com/p/f4shwg/git-for-daily-standup
 
     ds = "!git --no-pager diff --stat"
+    lsb="!git for-each-ref --color --sort=-committerdate --format=$'%(color:red)%(ahead-behind:HEAD)\t%(color:blue)%(refname:short)\t%(color:yellow)%(committerdate:relative)\t%(color:default)%(describe)' refs/heads/ --no-merged | \
+        sed 's/ /\t/' | \
+        column --separator=$'\t' --table --table-columns='Ahead,Behind,Branch Name,Last Commit,Description'"
 [rebase]
 	autosquash = true
 	updateRefs = true
