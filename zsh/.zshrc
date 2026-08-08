@@ -68,12 +68,13 @@ plugins=(
   npm
   nvm
   ssh-agent
+  dotenv
   zoxide
-  fd
   dotenv
   fzf
   aliases
   command-not-found
+  ubuntu
 )
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 zstyle :omz:plugins:ssh-agent lazy yes
