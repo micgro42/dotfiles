@@ -1,7 +1,4 @@
 echo "executing ~/.zshrc"
-# Set keyboard layout
-setxkbmap -layout us,de
-setxkbmap -option 'grp:switch'
 
 LOCAL_CONF_FILE=".local.conf"
 if [[ -e ~/$LOCAL_CONF_FILE ]] then
