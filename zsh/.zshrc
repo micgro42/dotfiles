@@ -64,6 +64,7 @@ SAVEHIST=10000000;
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  eza
   docker
   npm
   nvm
