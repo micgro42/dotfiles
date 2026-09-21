@@ -1,6 +1,6 @@
 
 #<type>(<component>): <imperative commit topic>
-# valid types:
+# valid types in addition to the conventional commit ones:
 # stats --> statslib related changes
 # instrument --> experiment/instrumentation related changes
 # test --> changes related to testing, including cypress
