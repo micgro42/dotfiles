@@ -1,12 +1,17 @@
 #!/usr/bin/env zsh
 
+if ! command -v eza &> /dev/null
+then
+    alias ls='ls --color=tty'
+    alias ll='ls -lhaF'
+    alias lt='ls -lhatr'
+    alias l.='ls -d .*'
+fi
+
 alias rm='rm -iv'
 alias mv='mv -iv'
 alias cp='cp -iv'
 alias ln='ln -i'
-alias ll='ls -lhaF'
-alias lt='ls -lhatr'
-alias l.='ls -d .*'
 alias mkdir='mkdir -pv'
 alias wget='wget -Nc'
 alias cal="cal -mw"
@@ -87,7 +92,6 @@ td(){
     mkdir -p $td; cd $td
     unset td
 }
-
 
 # docker commands to use some utilities via docker instead of having them installed
 # taken from https://github.com/wiese/dot-files

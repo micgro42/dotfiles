@@ -63,6 +63,7 @@ plugins=(
   git
   eza
   docker
+  eza
   npm
   nvm
   ssh-agent
