@@ -211,3 +211,27 @@ gbcids () {
         print "\nNo Change-Ids merged:"
         printf '  %s\n' "${none[@]}"
 }
+
+claude-search() {
+  local dir=~/.claude/projects/ kind f title
+  {
+    if command -v rg >/dev/null; then
+      rg -lF --no-ignore -g '*.jsonl' -- "$*" "$dir"
+    else
+      grep -rlF --include='*.jsonl' -- "$*" "$dir"
+    fi
+  } \
+    | awk '
+        match($0, /\/subagents\/[^\/]+\.jsonl$/) { f = substr($0, 1, RSTART - 1) ".jsonl"; sub_[f] = 1; seen[f] = 1; next }
+        { main[$0] = 1; seen[$0] = 1 }
+        END { for (f in seen) print (f in main ? "main" : "") ((f in main) && (f in sub_) ? "+" : "") (f in sub_ ? "subagent" : "") "\t" f }' \
+    | while IFS=$'\t' read -r kind f; do
+        [ -e "$f" ] || continue
+        title=$(grep -o '"customTitle":"[^"]*"' "$f" | tail -n1)
+        [ -n "$title" ] || title=$(grep -o '"aiTitle":"[^"]*"' "$f" | tail -n1)
+        title=${title#*:\"}
+        printf '%s\t%s  %s  %s  %-13s  %s\n' "$(date -r "$f" +%s)" "$(date -r "$f" +%F)" \
+          "$(basename "$(dirname "$f")")" "$(basename "$f" .jsonl)" "$kind" "${title%\"}"
+      done \
+    | sort -rn | cut -f2-
+}
