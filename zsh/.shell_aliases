@@ -111,3 +111,103 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+# see work conversation: https://claude.ai/chat/dc974a80-e8fb-4ef7-83c5-43291657841b
+gitstray() {
+  printf '%-30s %-26s %-20s %-12s %s\n' DIR BRANCH VS-BASE WORKTREE SUBMODULES
+  for d in */; do
+    git -C "$d" rev-parse --git-dir >/dev/null 2>&1 || continue
+    b=$(git -C "$d" symbolic-ref --short -q HEAD) || b="(detached)"
+
+    # superproject file changes; submodules excluded, they get their own column
+    (( s = $(git -C "$d" diff --cached --ignore-submodules=all --name-only | wc -l) ))
+    (( m = $(git -C "$d" diff          --ignore-submodules=all --name-only | wc -l) ))
+    (( u = $(git -C "$d" ls-files --others --exclude-standard   | wc -l) ))
+    state=""
+    (( s )) && state+="S$s "
+    (( m )) && state+="M$m "
+    (( u )) && state+="?$u "
+    state=${state:-clean}
+
+    # submodules whose checkout doesn't match the superproject index
+    subs="-"
+    if [[ -f $d/.gitmodules ]]; then
+      st=$(git -C "$d" submodule status 2>/dev/null)
+      (( stale = $(grep -c '^+' <<< "$st") ))
+      (( unin  = $(grep -c '^-' <<< "$st") ))
+      (( conf  = $(grep -c '^U' <<< "$st") ))
+      subs=""
+      (( stale )) && subs+="stale:$stale "
+      (( unin  )) && subs+="uninit:$unin "
+      (( conf  )) && subs+="conflict:$conf "
+      subs=${subs:-ok}
+    fi
+
+    on_base=0
+    [[ $b == main || $b == master ]] && on_base=1
+    (( on_base )) && [[ $state == clean && ( $subs == ok || $subs == "-" ) ]] && continue
+
+    if (( on_base )); then
+      rel="-"
+    else
+      base=""
+      for c in main master; do
+        git -C "$d" show-ref --verify --quiet "refs/heads/$c" && { base=$c; break; }
+      done
+      if [[ -n $base ]]; then
+        counts=(${=$(git -C "$d" rev-list --left-right --count "$base...HEAD")})
+        rel="+$counts[2] / -$counts[1] vs $base"
+      else
+        rel="no main/master"
+      fi
+    fi
+
+    printf '%-30s %-26s %-20s %-12s %s\n' "${d%/}" "$b" "$rel" "$state" "$subs"
+  done
+}
+
+# Delete branches whose every commit is already upstream by patch-id,
+# i.e. a rebase onto the main branch would drop all of them.
+gbdc () {
+        local main base current branch
+        main=$(git_main_branch)
+        base=origin/$main
+        git rev-parse -q --verify $base >/dev/null || base=$main
+        current=$(git branch --show-current)
+        git for-each-ref refs/heads/ "--format=%(refname:short)" | while read -r branch
+        do
+                [[ $branch == $main || $branch == $current ]] && continue
+                git cherry $base $branch | command grep -q '^+' || git branch -D $branch
+        done
+}
+
+# List branches not merged by ancestry, grouped by how many of their
+# Change-Ids are on the main branch. A commit without a Change-Id counts
+# as not merged.
+gbcids () {
+        local main base master_ids branch counts merged total
+        local -a all some none
+        main=$(git_main_branch)
+        base=origin/$main
+        git rev-parse -q --verify $base >/dev/null || base=$main
+        master_ids=$(git log --format='%(trailers:key=Change-Id,valueonly,separator=%x20)' $base)
+        for branch in $(git for-each-ref --sort=-committerdate --no-merged=$base refs/heads/ "--format=%(refname:short)")
+        do
+                counts=$(awk 'NR == FNR { m[$1]; next } { t++; if ( $2 in m ) n++ } END { print n + 0, t + 0 }' \
+                        <(printf '%s\n' "$master_ids") \
+                        <(git log --format='x %(trailers:key=Change-Id,valueonly,separator=%x20)' $base..$branch))
+                read -r merged total <<< "$counts"
+                if (( merged == total )); then
+                        all+=("$branch $merged/$total")
+                elif (( merged > 0 )); then
+                        some+=("$branch $merged/$total")
+                else
+                        none+=("$branch $merged/$total")
+                fi
+        done
+        print "All Change-Ids merged (check, then delete):"
+        printf '  %s\n' "${all[@]}"
+        print "\nSome Change-Ids merged (rebase):"
+        printf '  %s\n' "${some[@]}"
+        print "\nNo Change-Ids merged:"
+        printf '  %s\n' "${none[@]}"
+}
