@@ -184,19 +184,21 @@ gbdc () {
 # Change-Ids are on the main branch. A commit without a Change-Id counts
 # as not merged.
 gbcids () {
-        local main base master_ids branch counts merged total
-        local -a all some none
+        local main base master_ids branch counts merged with_id total section name sep=
+        local -a all some none noids items
         main=$(git_main_branch)
         base=origin/$main
         git rev-parse -q --verify $base >/dev/null || base=$main
         master_ids=$(git log --format='%(trailers:key=Change-Id,valueonly,separator=%x20)' $base)
         for branch in $(git for-each-ref --sort=-committerdate --no-merged=$base refs/heads/ "--format=%(refname:short)")
         do
-                counts=$(awk 'NR == FNR { m[$1]; next } { t++; if ( $2 in m ) n++ } END { print n + 0, t + 0 }' \
+                counts=$(awk 'NR == FNR { m[$1]; next } { t++; if ( $2 != "" ) w++; if ( $2 in m ) n++ } END { print n + 0, w + 0, t + 0 }' \
                         <(printf '%s\n' "$master_ids") \
                         <(git log --format='x %(trailers:key=Change-Id,valueonly,separator=%x20)' $base..$branch))
-                read -r merged total <<< "$counts"
-                if (( merged == total )); then
+                read -r merged with_id total <<< "$counts"
+                if (( with_id == 0 )); then
+                        noids+=("$branch $total commit(s)")
+                elif (( merged == total )); then
                         all+=("$branch $merged/$total")
                 elif (( merged > 0 )); then
                         some+=("$branch $merged/$total")
@@ -204,12 +206,19 @@ gbcids () {
                         none+=("$branch $merged/$total")
                 fi
         done
-        print "All Change-Ids merged (check, then delete):"
-        printf '  %s\n' "${all[@]}"
-        print "\nSome Change-Ids merged (rebase):"
-        printf '  %s\n' "${some[@]}"
-        print "\nNo Change-Ids merged:"
-        printf '  %s\n' "${none[@]}"
+        for section in \
+                "all:All Change-Ids merged (check, then delete):" \
+                "some:Some Change-Ids merged (rebase):" \
+                "none:No Change-Ids merged:" \
+                "noids:No Change-Ids at all:"
+        do
+                name=${section%%:*}
+                items=("${(@P)name}")
+                (( $#items )) || continue
+                printf '%s%s\n' "$sep" "${section#*:}"
+                printf '  %s\n' "${items[@]}"
+                sep=$'\n'
+        done
 }
 
 claude-search() {
